@@ -1,2 +1,2 @@
 # loja_de_roupa_Fullstack
-Este trabalho acadêmico propõe a implementação de uma loja virtual de vestuário
+Este trabalho acadêmico propõe a implementação de uma loja virtual de vestuário, empregando Flask como framework para o backend, PostgreSQL como banco de dados, e tecnologias web (HTML, CSS, JavaScript e Bootstrap) para o frontend. O projeto visa demonstrar a integração dessas ferramentas no desenvolvimento de uma plataforma de comércio eletrônico funcional e visualmente atrativa.
