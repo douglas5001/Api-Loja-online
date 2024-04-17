@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar.transparent {
+    background-color: transparent;
+}
+
+.navbar .logo {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: auto;
+}
+
+.navbar .links {
+    display: flex;
+}
+
+.navbar .links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar .icons a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.content {
+    margin-top: 50px; /* Ajuste conforme a altura da barra de navegação */
+    padding: 20px;
+    height: 2000px; /* Apenas para exemplo de altura */
+}
