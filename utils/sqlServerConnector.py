@@ -31,10 +31,8 @@ def get_secret(secret):
     client = session.client(
         service_name='secretsmanager',
         region_name=region_name,
-        aws_access_key_id='AKIAU6GDXPRDRK5ACZ4E',
-        aws_secret_access_key='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'
-        # aws_access_key_id=json.loads(os.environ.get('aws_token'))['Access Key Id'],
-        # aws_secret_access_key=json.loads(os.environ.get('aws_token'))['Secret Access Key']
+        aws_access_key_id=json.loads(os.environ.get('aws_token'))['Access Key Id'],
+        aws_secret_access_key=json.loads(os.environ.get('aws_token'))['Secret Access Key']
     )
 
     # In this sample we only handle the specific exceptions for the 'GetSecretValue' API.
