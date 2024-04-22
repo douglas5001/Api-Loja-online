@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, render_template, make_response, request
-from utils.config import mysql
+from config import mysql
+from routes.auth import auth_blueprint
 
 app = Flask(__name__)
+app.register_blueprint(auth_blueprint)
 
 @app.route('/')
 def method_main():
@@ -32,6 +34,19 @@ def create_product():
     except Exception as e:  # Capturar exceção para obter detalhes do erro
         erro_message = f'Erro no POST de produto: {str(e)}'
         return make_response(jsonify({'erro': erro_message}), 500)  
+    
+@app.route('/produtos/<int:id>', methods=["DELETE"])
+def delete_product(id):
+    try:
+        cursor = mysql.cursor()
+        cursor.execute('DELETE FROM produto WHERE id = %s', (id,))
+        mysql.commit()
+        cursor.close()
+        return jsonify({'message': 'Produto excluído com sucesso'})
+    except Exception as e:
+        erro_message = f'Erro na exclusão do produto: {str(e)}'
+        return make_response(jsonify({'erro': erro_message}), 500)
+    
     
 
 if __name__ == '__main__':
