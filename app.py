@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, render_template, make_response, request
 from config import mysql
-from routes.auth import auth_blueprint
 
 app = Flask(__name__)
-app.register_blueprint(auth_blueprint)
+
 
 @app.route('/')
 def method_main():
