@@ -1,4 +1,4 @@
 from utils.sqlServerConnector import extract_data
-from utils.config import SELECT_QUERIES
+from utils.config import GET_QUERIES
 
-print(extract_data(SELECT_QUERIES['produto']))
+print(extract_data(GET_QUERIES['produto']))

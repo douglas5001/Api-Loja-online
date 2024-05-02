@@ -1,6 +1,5 @@
 import json
 import os
-
 import mysql
 import requests
 from sqlalchemy import create_engine, text
@@ -105,18 +104,3 @@ def extract_data(query):
         print(e)
         raise e
 
-
-def pushToSqlServer(df_data, table):
-    engine = sqlConnector()
-    schema = 'db_lojavirtual'
-    inserted_at = 'inserted_at'
-
-    try:
-        print('Realizando inserção do dataframe')
-        #df_data.to_csv(f'buffer_{endpoint}.csv')
-        df_data.to_sql(name=table, index=False, con=engine, schema=schema, if_exists='append', chunksize=10000)
-        print(f'inserted into {schema}.{table}')
-
-    except Exception as e:
-        print('Erro ao inserir')
-        print(e)
