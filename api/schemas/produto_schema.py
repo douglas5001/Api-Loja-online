@@ -15,7 +15,7 @@ class ProdutoSchema(ma.SQLAlchemyAutoSchema):
 
     _links = ma.Hyperlinks(
         {
-            "get":ma.URLFor("prdutodetail", id="<id>"),
+            "get":ma.URLFor("produtodetail", id="<id>"),
             "put":ma.URLFor("produtodetail", id="<id>"),
             "delete":ma.URLFor("produtodetail", id="<id>")
         }
