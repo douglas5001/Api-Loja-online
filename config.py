@@ -1,0 +1,11 @@
+DEBUG = True
+
+USERNAME = 'root'
+PASSWORD = 'bola2020'
+SERVER = '85.239.239.196'
+DB = 'db_lojavirtual'
+
+SQLALCHEMY_DATABASE_URI = f'mysql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
+SQLALCHEMY_TRACK_MODFICATIONS = True
+
+SECRET_KEY="aplicacao_flask"
