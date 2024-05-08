@@ -3,6 +3,7 @@ from api import db
 
 def cadastrar_produto(produto):
     produto_bd = produto_model.Produto(nome=produto.nome, descricao=produto.descricao, data_publicacao=produto.data_publicacao, categoria=produto.categoria)
+
     db.session.add(produto_bd)
     db.session.commit()
     return produto_bd

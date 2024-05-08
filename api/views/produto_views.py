@@ -29,6 +29,7 @@ class ProdutoList(Resource):
             categoria_produto = categoria_service.listar_categoria_id(categoria)
             if categoria_produto is None:
                 return make_response(jsonify("categoria nao encontrada"), 404)
+
             novo_produto = produto.Produto(nome=nome, descricao=descricao, data_publicacao=data_publicacao, categoria=categoria_produto)
             resultado = produto_service.cadastrar_produto(novo_produto)
             x = cs.jsonify(resultado)

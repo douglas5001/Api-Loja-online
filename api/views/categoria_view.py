@@ -7,6 +7,7 @@ from ..services import categoria_service
 from ..paginate import paginate
 from ..models.categoria_model import Categoria
 from flask_jwt_extended import jwt_required
+from ..decorator import admin_required
 
 class CategoriaList(Resource):
     #@jwt_required()
@@ -17,7 +18,7 @@ class CategoriaList(Resource):
         #return make_response(cs.jsonify(categorias), 200)
         return paginate(Categoria, cs)
 
-    @jwt_required()
+    @admin_required
     def post(self):
         pd = categoria_schema.CategoriaSchema()
         validate = pd.validate(request.json)
@@ -31,6 +32,7 @@ class CategoriaList(Resource):
             x = pd.jsonify(resultado)
             return make_response(x, 201)
 
+@admin_required
 class CategoriaDetail(Resource):
     #@jwt_required()
     def get(self, id):
@@ -40,7 +42,7 @@ class CategoriaDetail(Resource):
         cs = categoria_schema.CategoriaSchema()
         return make_response(cs.jsonify(categoria), 200)
 
-    @jwt_required()
+    @admin_required
     def put(self, id):
         categoria_bd = categoria_service.listar_categoria_id(id)
         if categoria_bd is None:
@@ -57,7 +59,7 @@ class CategoriaDetail(Resource):
             categoria_atualizado = categoria_service.listar_categoria_id(id)
             return make_response(cs.jsonify(categoria_atualizado), 200)
 
-    @jwt_required()
+    @admin_required
     def delete(self, id):
         categoria_bd = categoria_service.listar_categoria_id(id)
         if categoria_bd is None:
