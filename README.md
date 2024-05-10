@@ -60,4 +60,4 @@ FLASK_APP=api.py.
 ```
 
 ### remomeie o arquivo configOLD.py para config.py, e adicione suas chaves da AWS
-<img src="AWS.png">
+<img src="aws.png">
