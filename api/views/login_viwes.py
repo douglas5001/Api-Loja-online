@@ -32,7 +32,7 @@ class LoginList(Resource):
             if usuario_db and usuario_db.ver_senha(senha):
                 access_token = create_access_token(
                     identity=usuario_db.id,
-                    expires_delta=timedelta(seconds=100)
+                    expires_delta=timedelta(seconds=500)
                 )
 
                 refresh_token = create_refresh_token(

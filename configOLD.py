@@ -5,6 +5,7 @@ import boto3
 
 DEBUG = True
 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def get_secret(secret):
     secret_name = secret
     region_name = "us-east-1"

@@ -6,12 +6,13 @@ class ProdutoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = produto_model.Produto
         load_instance = True
-        fields = ("id", "nome", "descricao", "data_publicacao", "categoria", "_links")
+        fields = ("id", "nome", "descricao", "data_publicacao", "categoria", "imagem", "_links")
 
     nome = fields.String(required=True)
     descricao = fields.String(required=True)
     data_publicacao = fields.Date(required=True)
     categoria = fields.String(required=True)
+    imagem = fields.String(required=False)
 
     _links = ma.Hyperlinks(
         {
