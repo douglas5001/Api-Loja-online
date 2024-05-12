@@ -8,6 +8,11 @@ from ..services import usuario_service
 
 class UsuarioList(Resource):
 
+    def get(self):
+        usuarios = usuario_service.listar_usuario()
+        us = usuario_schema.UsuarioSchema(many=True)
+        return make_response(us.jsonify(usuarios))
+
     def post(self):
         us = usuario_schema.UsuarioSchema()
         validate = us.validate(request.json)

@@ -1,4 +1,4 @@
-from ..models import usuario_model
+from ..models import usuario_model, produto_model
 from api import db
 
 def cadastrar_usuario(usuario):
@@ -7,6 +7,10 @@ def cadastrar_usuario(usuario):
     db.session.add(usuario_bd)
     db.session.commit()
     return usuario_bd
+
+def listar_usuario():
+    usuario = usuario_model.Usuario.query.all()
+    return usuario
 
 def listar_usuario_email(email):
     return usuario_model.Usuario.query.filter_by(email=email).first()

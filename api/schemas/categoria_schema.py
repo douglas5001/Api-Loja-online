@@ -7,7 +7,7 @@ class CategoriaSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = categoria_model.Categoria
         load_instance = True
-        fields = ("id", "nome", "descricao", "produtos", "professores")
+        fields = ("id", "nome", "descricao", "produtos")
 
     nome = fields.String(required=True)
     descricao = fields.String(required=True)

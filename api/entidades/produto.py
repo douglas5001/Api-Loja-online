@@ -1,9 +1,10 @@
 class Produto():
-    def __init__(self, nome, descricao, data_publicacao, categoria, imagem):
+    def __init__(self, nome, descricao, data_publicacao, categoria_id, quantidade, imagem):
         self.__nome = nome
         self.__descricao = descricao
         self.__data_publicacao = data_publicacao
-        self.__categoria = categoria
+        self.__categoria_id = categoria_id
+        self.__quantidade = quantidade
         self.__imagem = imagem
 
     @property
@@ -31,12 +32,20 @@ class Produto():
         self.__data_publicacao = data_publicacao
 
     @property
-    def categoria(self):
-        return self.__categoria
+    def categoria_id(self):
+        return self.__categoria_id
 
-    @categoria.setter
-    def projeto(self, categoria):
-        self.__categoria = categoria
+    @categoria_id.setter
+    def categoria_id(self, categoria_id):
+        self.__categoria_id = categoria_id
+
+    @property
+    def quantidade(self):
+        return self.__quantidade
+
+    @quantidade.setter
+    def quantidade(self, quantidade):
+        self.__quantidade = quantidade
 
     @property
     def imagem(self):
