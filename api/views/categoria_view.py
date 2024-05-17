@@ -11,10 +11,7 @@ from flask_jwt_extended import jwt_required
 class CategoriaList(Resource):
     #@jwt_required()
     def get(self):
-        #ADICIONANDO O SCRIPT DE PAGINACAO
-        #categorias = categoria_service.listar_categoriass()
         cs = categoria_schema.CategoriaSchema(many=True)
-        #return make_response(cs.jsonify(categorias), 200)
         return paginate(Categoria, cs)
 
     @jwt_required()

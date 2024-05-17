@@ -62,7 +62,6 @@ def adicionar_quantidade_produto(id_usuario, id_produto, quantidade_produto):
     except ValueError:
         return False, "A quantidade do produto deve ser um número inteiro."
 
-    # Verifica se o usuário e o produto existem
     usuario = usuario_model.Usuario.query.get(id_usuario)
     produto = produto_model.Produto.query.get(id_produto)
     if not usuario or not produto:

@@ -48,7 +48,7 @@ class ProdutoList(Resource):
 
 
 class ProdutoDetail(Resource):
-    #@jwt_required()
+    @jwt_required()
     def get(self, id):
         produto = produto_service.listar_produto_id(id)
         if produto is None:
@@ -56,7 +56,7 @@ class ProdutoDetail(Resource):
         pd = produto_schema.ProdutoSchema()
         return make_response(pd.jsonify(produto), 200)
 
-    #@admin_required
+    @admin_required
     def put(self, id):
         produto_bd = produto_service.listar_produto_id(id)
         if produto_bd is None:
@@ -90,7 +90,7 @@ class ProdutoDetail(Resource):
             produto_atualizado = produto_service.listar_produto_id(id)
             return make_response(pd.jsonify(produto_atualizado), 200)
 
-    #@admin_required
+    @admin_required
     def delete(self, id):
         produto_bd = produto_service.listar_produto_id(id)
         if produto_bd is None:
@@ -100,6 +100,7 @@ class ProdutoDetail(Resource):
 
 
 class AdicionarQuantidadeProduto(Resource):
+    @admin_required
     def post(self):
         pd = usuario_produto_schema.AdicionarQuantidadeProdutoSchema()
         validate = pd.validate(request.json)
