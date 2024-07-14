@@ -1,7 +1,7 @@
 import os
 from ..models import produto_model, usuario_model
 from api import db, app
-from config import ALLOWED_EXTENSIONS
+#from config import ALLOWED_EXTENSIONS
 import uuid
 
 from ..models.produto_model import usuario_produto
