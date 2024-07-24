@@ -14,7 +14,7 @@ class Produto(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     nome = db.Column(db.String(50), nullable=False)
     descricao = db.Column(db.String(100), nullable=False)
-    data_publicacao = db.Column(db.Date, nullable=False)
+    data_publicacao = db.Column(db.String(100), nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
     imagem = db.Column(db.String(100), nullable=False)
     usuarios = db.relationship(Usuario, secondary="usuario_produto", back_populates="produtos")

@@ -19,7 +19,7 @@ class CategoriaList(Resource):
         pd = categoria_schema.CategoriaSchema()
         validate = pd.validate(request.json)
         if validate:
-            return make_response(jsonify(validate), 400)
+            return make_response(jsonify(validate), 2000)
         else:
             nome = request.json["nome"]
             descricao = request.json["descricao"]

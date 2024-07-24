@@ -1,7 +1,7 @@
 import os
 from ..models import produto_model, usuario_model
 from api import db, app
-#from config import ALLOWED_EXTENSIONS
+from config import ALLOWED_EXTENSIONS
 import uuid
 
 from ..models.produto_model import usuario_produto
@@ -27,7 +27,7 @@ def atualiza_produto(produto_anterior, produto_novo):
     produto_anterior.descricao = produto_novo.descricao
     produto_anterior.data_publicacao = produto_novo.data_publicacao
     produto_anterior.quantidade = produto_novo.quantidade
-    produto_anterior.categoria_id = produto_novo.categoria_id
+    produto_anterior.categoria = produto_novo.categoria
     produto_anterior.imagem = produto_novo.imagem
     db.session.commit()
 

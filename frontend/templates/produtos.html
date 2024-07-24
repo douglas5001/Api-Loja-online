@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2 style="text-align: center;">Lista de Produtos</h2>
+<hr>
+<div class="row">
+    {% for curso in cursos %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ url_for('uploaded_file', filename=curso.imagem) }}" class="card-img-top" alt="{{ curso.nome }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ curso.nome }}</h5>
+                <p class="card-text">{{ curso.descricao }}</p>
+                <p class="card-text">Quantidade: {{ curso.quantidade }}</p>
+                <form action="{{ url_for('delete_produto', id=curso.id) }}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ curso.id }}">Editar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div class="modal fade" id="editModal{{ curso.id }}" tabindex="-1" aria-labelledby="editModalLabel{{ curso.id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel{{ curso.id }}">Editar Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('update_produto', id=curso.id) }}" method="post">
+                        <div class="mb-3">
+                            <label for="nome{{ curso.id }}" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome{{ curso.id }}" name="nome" value="{{ curso.nome }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descricao{{ curso.id }}" class="form-label">Descrição</label>
+                            <input type="text" class="form-control" id="descricao{{ curso.id }}" name="descricao" value="{{ curso.descricao }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantidade{{ curso.id }}" class="form-label">Quantidade</label>
+                            <input type="number" class="form-control" id="quantidade{{ curso.id }}" name="quantidade" value="{{ curso.quantidade }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria_id{{ curso.id }}" class="form-label">Categoria ID</label>
+                            <input type="text" class="form-control" id="categoria_id{{ curso.id }}" name="categoria_id" value="{{ curso.categoria_id }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="data_publicacao{{ curso.id }}" class="form-label">Data de Publicação</label>
+                            <input type="date" class="form-control" id="data_publicacao{{ curso.id }}" name="data_publicacao" value="{{ curso.data_publicacao }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagem{{ curso.id }}" class="form-label">Imagem</label>
+                            <input type="text" class="form-control" id="imagem{{ curso.id }}" name="imagem" value="{{ curso.imagem }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Paginação -->
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if prev_page %}
+    <li class="page-item">
+      <a class="page-link" href="{{ prev_page }}">Previous</a>
+    </li>
+    {% endif %}
+    {% if next_page %}
+    <li class="page-item">
+      <a class="page-link" href="{{ next_page }}">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+<!-- Modal de Criação -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Criar Novo Produto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('produtos') }}" method="post">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <input type="text" class="form-control" id="descricao" name="descricao" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantidade" class="form-label">Quantidade</label>
+                        <input type="number" class="form-control" id="quantidade" name="quantidade" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria_id" class="form-label">Categoria ID</label>
+                        <input type="text" class="form-control" id="categoria_id" name="categoria_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data_publicacao" class="form-label">Data de Publicação</label>
+                        <input type="date" class="form-control" id="data_publicacao" name="data_publicacao" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imagem" class="form-label">Imagem</label>
+                        <input type="text" class="form-control" id="imagem" name="imagem" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Criar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Botão de Criação -->
+<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">Adicionar Produto</button>
+
+{% endblock conteudo %}
